@@ -1,0 +1,288 @@
+/* ===== Variabel warna (ubah di sini untuk ganti tema) ===== */
+:root {
+  --primer: #0a06e1;
+  --primer-gelap: #efb700;
+  --aksen: #bbc8da;
+  --latar: #eef2f7;
+  --garis: #d3dce6;
+  --bahaya: #cc2b2b;
+  --sukses: #1a7a2e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--latar);
+  margin: 0;
+  padding: 20px;
+  color: #222;
+}
+
+/* ===== Header ===== */
+.header {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--aksen);
+}
+
+h1 {
+  margin: 0;
+  color: var(--primer);
+}
+
+.header p {
+  margin: 4px 0 0;
+  color: #5b6b7b;
+}
+
+h2 {
+  margin-top: 0;
+  color: var(--primer);
+}
+
+/* ===== Layout dua kolom ===== */
+.container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.input-section {
+  flex: 1 1 340px;
+}
+
+.output-section {
+  flex: 2 1 540px;
+  min-width: 0; /* supaya tabel tidak melebarkan kolom */
+}
+
+/* ===== Form ===== */
+.form-nilai {
+  border: 1px solid var(--garis);
+  border-top: 4px solid var(--aksen);
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(31, 78, 121, 0.08);
+}
+
+.form-nilai h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: var(--primer);
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.form-row label {
+  width: 130px;
+  font-size: 14px;
+}
+
+.form-row span {
+  width: 15px;
+}
+
+.form-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #aab7c4;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-row input:focus {
+  outline: none;
+  border-color: var(--aksen);
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.2);
+}
+
+/* kolom hasil hitung (readonly) */
+.form-row input[readonly] {
+  background-color: #eef2f7;
+  font-weight: bold;
+  color: var(--primer);
+}
+
+/* input yang tidak lolos validasi (ditambah lewat classList di JS) */
+.input-error {
+  border-color: var(--bahaya) !important;
+  background-color: #fdeaea;
+}
+
+.btn-proses {
+  margin-top: 10px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--aksen);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-proses:hover {
+  background-color: var(--primer);
+}
+
+.pesan {
+  margin: 12px 0 0;
+  min-height: 1.2em;
+  font-size: 14px;
+}
+
+.text-danger  { color: var(--bahaya); }
+.text-success { color: var(--sukses); }
+
+/* ===== Kartu output ===== */
+.kartu {
+  background-color: #fff;
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(31, 78, 121, 0.08);
+}
+
+.kontrol {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.kontrol input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #aab7c4;
+  border-radius: 4px;
+}
+
+.kontrol select {
+  padding: 8px 10px;
+  border: 1px solid #aab7c4;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.kontrol input:focus,
+.kontrol select:focus {
+  outline: none;
+  border-color: var(--aksen);
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.2);
+}
+
+/* ===== Tabel ===== */
+.tabel-wrapper {
+  overflow-x: auto;
+}
+
+.tabel-nilai {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabel-nilai th,
+.tabel-nilai td {
+  border: 1px solid var(--garis);
+  padding: 10px;
+  text-align: left;
+}
+
+.tabel-nilai thead th {
+  background-color: var(--primer);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.tabel-nilai tbody tr:nth-child(even) {
+  background-color: #eaf2fb;
+}
+
+.tabel-nilai tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.tabel-nilai tbody tr:hover {
+  background-color: #d6e6f7;
+}
+
+/* kolom angka (Tugas sampai Nilai akhir) rata tengah, Grade ditebalkan */
+.tabel-nilai td:nth-child(n+3):nth-child(-n+7) {
+  text-align: center;
+}
+
+.tabel-nilai td:nth-child(8) {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* baris mahasiswa tidak lulus (ditambah lewat classList di JS) */
+.tabel-nilai tbody tr.tidak-lulus td {
+  color: var(--bahaya);
+  font-weight: bold;
+}
+
+/* baris "Data tidak ditemukan" */
+.tabel-nilai td.kosong {
+  text-align: center;
+  font-style: italic;
+  color: #d9ff00;
+}
+
+.btn-hapus {
+  padding: 4px 10px;
+  border: 1px solid var(--bahaya);
+  border-radius: 4px;
+  background-color: #fff;
+  color: var(--bahaya);
+  cursor: pointer;
+}
+
+.btn-hapus:hover {
+  background-color: var(--bahaya);
+  color: #fff;
+}
+
+.ringkasan {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: #5b6b7b;
+}
+
+/* ===== Rumus & keterangan grade ===== */
+.rumus {
+  font-weight: bold;
+  margin-top: 20px;
+  color: var(--primer);
+}
+
+.keterangan {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 12px;
+  margin-top: 8px;
+}
+
+.keterangan span {
+  background-color: #fff;
+  border: 1px solid var(--garis);
+  border-left: 4px solid var(--aksen);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 14px;
+}

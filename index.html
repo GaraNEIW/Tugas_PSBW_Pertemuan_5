@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekap Nilai Akhir Mahasiswa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Judul halaman -->
+  <header class="header">
+    <h1>Rekap Nilai Akhir Mahasiswa</h1>
+    <p>Tugas Individu 2 &ndash; JavaScript, DOM &amp; Events</p>
+  </header>
+
+  <div class="container">
+
+    <!-- ===== BAGIAN INPUT ===== -->
+    <div class="input-section">
+      <h2>Input</h2>
+      <!-- id="formNilai" dipakai JS; novalidate = validasi memakai JS, bukan bawaan browser -->
+      <form class="form-nilai" id="formNilai" novalidate>
+        <h3>Menghitung Nilai Akhir Mahasiswa</h3>
+
+        <div class="form-row">
+          <label for="nim">NIM</label>
+          <span>:</span>
+          <input type="text" id="nim" value="1482500069">
+        </div>
+
+        <div class="form-row">
+          <label for="nama">Nama Mahasiswa</label>
+          <span>:</span>
+          <input type="text" id="nama" value="Gara Zaki Pramudya">
+        </div>
+
+        <div class="form-row">
+          <label for="tugas">Tugas</label>
+          <span>:</span>
+          <input type="text" id="tugas" value="90">
+        </div>
+
+        <div class="form-row">
+          <label for="quiz">Quiz</label>
+          <span>:</span>
+          <input type="text" id="quiz" value="95">
+        </div>
+
+        <div class="form-row">
+          <label for="uts">UTS</label>
+          <span>:</span>
+          <input type="text" id="uts" value="90">
+        </div>
+
+        <div class="form-row">
+          <label for="uas">UAS</label>
+          <span>:</span>
+          <input type="text" id="uas" value="95">
+        </div>
+
+        <!-- readonly: diisi otomatis oleh JS setelah tombol Proses ditekan -->
+        <div class="form-row">
+          <label for="nilai_akhir">Nilai Akhir</label>
+          <span>:</span>
+          <input type="text" id="nilai_akhir" readonly>
+        </div>
+
+        <div class="form-row">
+          <label for="grade">Grade</label>
+          <span>:</span>
+          <input type="text" id="grade" readonly>
+        </div>
+
+        <button type="submit" class="btn-proses">Proses</button>
+        <p id="pesan" class="pesan"></p>
+      </form>
+    </div>
+
+    <!-- ===== BAGIAN OUTPUT ===== -->
+    <div class="output-section">
+      <h2>Output</h2>
+
+      <div class="kartu">
+        <!-- pencarian & filter grade -->
+        <div class="kontrol">
+          <input type="text" id="cari" placeholder="Cari nama atau NIM...">
+          <select id="filterGrade">
+            <option value="semua">Semua grade</option>
+            <option value="A">Grade A</option>
+            <option value="B">Grade B</option>
+            <option value="C">Grade C</option>
+            <option value="D">Grade D</option>
+            <option value="E">Grade E</option>
+            <option value="F">Grade F</option>
+          </select>
+        </div>
+
+        <!-- wrapper agar tabel bisa digeser di layar kecil -->
+        <div class="tabel-wrapper">
+          <table class="tabel-nilai">
+            <thead>
+              <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Tugas</th>
+                <th>Quiz</th>
+                <th>UTS</th>
+                <th>UAS</th>
+                <th>Nilai akhir</th>
+                <th>Grade</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <!-- isi tbody dibuat oleh JavaScript dari array mahasiswa -->
+            <tbody id="tbodyNilai"></tbody>
+          </table>
+        </div>
+
+        <p id="ringkasan" class="ringkasan"></p>
+      </div>
+
+      <p class="rumus">
+        Nilai akhir = (0.2*Tugas)+(0.2*Quiz)+(0.3*UTS)+(0.3*UAS)
+      </p>
+      <div class="keterangan">
+        <span>A &ndash; NA &gt; 85</span>
+        <span>C &ndash; NA &gt; 60</span>
+        <span>E &ndash; NA &gt; 30</span>
+        <span>B &ndash; NA &gt; 70</span>
+        <span>D &ndash; NA &gt; 40</span>
+        <span>F &ndash; NA &gt; 0</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
